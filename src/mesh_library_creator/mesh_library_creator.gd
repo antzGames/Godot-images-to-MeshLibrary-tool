@@ -35,19 +35,19 @@ func _process(_delta: float) -> void:
 		get_tree().quit(1)
 
 func create_mesh_library():
-	print_rich("\n-----------------------------")
+	print("\n-----------------------------")
 	print_rich("[color=green]Antz MeshLibrary Creator Tool[/color]")
-	print_rich("-----------------------------\n")
+	print("-----------------------------\n")
 	
 	# check export variables
 	if not import_dir or import_dir.length() == 0:
-		_log_error("Import directory not set!")
+		printerr("Import directory not set!")
 		return
 	elif not export_dir or export_dir.length() == 0:
-		_log_error("Export directory not set!")
+		printerr("Export directory not set!")
 		return
 	elif not export_file_name or export_file_name.length() == 0:
-		_log_error("Export file name empty!")
+		printerr("Export file not set!")
 		return
 
 	abs_import_dir = ProjectSettings.globalize_path(import_dir)
@@ -67,12 +67,12 @@ func create_mesh_library():
 				files.append(file_name)
 			file_name = dir.get_next()
 	else:
-		_log_error("Could not open import directory!")
+		printerr("Could not open import directory!")
 		return
 	
 	# Stop if no files found
 	if files.size() == 0:
-		_log_error("No image tiles found in import directory!")
+		printerr("No image tiles found in import directory!")
 		return
 	
 	print_rich("Image tiles found: [color=yellow]", files, "[/color]\n")
@@ -101,12 +101,12 @@ func create_mesh_library():
 		mesh_library.set_item_mesh(x, mesh)
 		x += 1
 
-	# check if a meshlib file exists, if so delete it
+	# check if a meshlib file already exists, if so delete it
 	var delete_access = DirAccess.open(abs_export_dir)
 	
-	# check if export dir valid
+	# check if export directory valid
 	if not delete_access:
-		_log_error("Error accessing export directory!")
+		printerr("Error accessing export directory!")
 		return
 		
 	delete_access.remove(str(abs_export_dir, "/", "mesh_library.meshlib"))
@@ -114,14 +114,10 @@ func create_mesh_library():
 	# save new mesh library to export directory
 	var error = ResourceSaver.save(mesh_library, str(export_dir, "/", export_file_name, ".meshlib"))
 	
-	# check if resourced saved ok
+	# check if resource saved ok
 	if error:
-		_log_error("Error saving resource to export directory!")
+		printerr("Error saving resource to export directory!")
 		return
 		
 	print_rich(str("\n[color=yellow]", export_dir, "/[/color][color=purple]", export_file_name, ".meshlib[/color]", " has been created."))
 	print_rich("\n[color=green]Done![/color]")
-	
-
-func _log_error(e: String):
-	printerr(e)
