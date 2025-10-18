@@ -1,9 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://cc8rr4lus4knh"]
 
-[ext_resource type="Script" uid="uid://d1yqocva3lat3" path="res://src/mesh_library_creator/creator.gd" id="1_hpfay"]
+[ext_resource type="Script" uid="uid://d1yqocva3lat3" path="res://src/mesh_library_creator/mesh_library_creator.gd" id="1_xlbo2"]
 
-[node name="ModelCreator" type="Node"]
-script = ExtResource("1_hpfay")
+[node name="MeshLibraryCreator" type="Node"]
+script = ExtResource("1_xlbo2")
+import_dir = "res://assets/import/tiles"
+export_dir = "res://assets/export/mesh_libraries"
 
 [node name="Label" type="RichTextLabel" parent="."]
 anchors_preset = 15
@@ -11,7 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "Just press [color=yellow]Generate MeshLibrary[/color] in inspector!"
 horizontal_alignment = 1
