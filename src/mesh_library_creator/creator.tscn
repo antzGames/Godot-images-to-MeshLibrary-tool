@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc8rr4lus4knh"]
+
+[ext_resource type="Script" uid="uid://d1yqocva3lat3" path="res://src/mesh_library_creator/creator.gd" id="1_hpfay"]
+
+[node name="ModelCreator" type="Node"]
+script = ExtResource("1_hpfay")
+import_dir = "res://assets/import/tiles"
+export_dir = "res://assets/export/mesh_libraries"
