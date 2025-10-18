@@ -6,7 +6,7 @@ extends Node
 @export_dir var export_dir : String
 ## Name of the exported [MeshLibrary].
 @export_dir var export_file_name : String = "mesh_library"
-## You must include the initial period. Case sensitive!
+## Tile images file extension. You must include the initial period. Case sensitive!
 @export var extention : String = ".png"
 ## Size of QuadMesh as [Vector2] in meters
 @export var size_of_mesh: Vector2  = Vector2(1.2, 1.2)
