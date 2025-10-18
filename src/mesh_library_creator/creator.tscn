@@ -4,5 +4,15 @@
 
 [node name="ModelCreator" type="Node"]
 script = ExtResource("1_hpfay")
-import_dir = "res://assets/import/tiles"
-export_dir = "res://assets/export/mesh_libraries"
+
+[node name="Label" type="RichTextLabel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "Just press [color=yellow]Generate MeshLibrary[/color] in inspector!"
+horizontal_alignment = 1
+vertical_alignment = 1

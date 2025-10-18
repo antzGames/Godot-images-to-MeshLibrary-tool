@@ -1,3 +1,5 @@
+@tool
+class_name MeshLibraryCreator
 extends Node
 
 ## Directory where the tile images are located.
@@ -11,30 +13,38 @@ extends Node
 ## Size of QuadMesh as [Vector2] in meters
 @export var size_of_mesh: Vector2  = Vector2(1.2, 1.2)
 
+@export_tool_button("\nGenerate MeshLibrary\n\n", "MeshLibrary")
+var generate_action = create_mesh_library
+
 var abs_import_dir: String
 var abs_export_dir: String
 
 func _ready() -> void:
-	if not import_dir or import_dir.length() == 0:
-		printerr("Import directory not set!")
-		_exit_app()
-	elif not export_dir or export_dir.length() == 0:
-		printerr("Export directory not set!")
-		_exit_app()
-	else:
-		import_dir += "/"
-		export_dir += "/"
-		abs_import_dir = ProjectSettings.globalize_path(import_dir)
-		abs_export_dir = ProjectSettings.globalize_path(export_dir)
-		
-		#print("Import directory absolute: ", abs_import_dir)
-		#print("Import directory project: ", import_dir)
-		#print("Export directory absolute: ", abs_export_dir)
-		#print("Export directory project: ", export_dir, "\n")
-		
-		create_mesh_library()
+	print_rich("Just press [color=yellow]Generate MeshLibrary[/color] in inspector!")
+
+func _process(_delta: float) -> void:
+	if !Engine.is_editor_hint():
+		await get_tree().create_timer(1.5).timeout
+		get_tree().quit(1)
 
 func create_mesh_library():
+	print_rich("[color=green]Antz MeshLibrary Creator Tool[/color]")
+	print_rich("-----------------------------\n")
+	
+	# check export variables
+	if not import_dir or import_dir.length() == 0:
+		_log_error("Import directory not set!")
+		return
+	elif not export_dir or export_dir.length() == 0:
+		_log_error("Export directory not set!")
+		return
+	elif not export_file_name or export_file_name.length() == 0:
+		_log_error("Export file name empty!")
+		return
+
+	abs_import_dir = ProjectSettings.globalize_path(import_dir)
+	abs_export_dir = ProjectSettings.globalize_path(export_dir)
+
 	var files = []
 	
 	# open import directory
@@ -49,26 +59,24 @@ func create_mesh_library():
 				files.append(file_name)
 			file_name = dir.get_next()
 	else:
-		printerr("Could not open import directory!")
-		_exit_app()
+		_log_error("Could not open import directory!")
 		return
 	
 	# Stop if no files found
 	if files.size() == 0:
-		printerr("No image tiles found in import directory!")
-		_exit_app()
+		_log_error("No image tiles found in import directory!")
 		return
 	
-	print("Files: ", files, "\n")
+	print_rich("Image tiles found: [color=yellow]", files, "[/color]\n")
 	
 	# Create mesh library
 	var x: int = 0
 	var mesh_library: MeshLibrary = MeshLibrary.new()
 	
 	for file_name: String in files:
-		print("Creating item: ", x , " - ", str(file_name.split(".")[0]))
+		print_rich("Creating item: ", x , " - [color=yellow]", str(file_name.split(".")[0],"[/color]"))
 
-		var texture = load(str(import_dir, file_name))
+		var texture = load(str(import_dir, "/", file_name))
 		var mat: StandardMaterial3D = StandardMaterial3D.new()
 		var mesh = QuadMesh.new()
 		
@@ -90,27 +98,29 @@ func create_mesh_library():
 	
 	# check if export dir valid
 	if not delete_access:
-		printerr("Error accessing export directory!")
-		_exit_app()
+		_log_error("Error accessing export directory!")
 		return
 		
-	delete_access.remove(str(abs_export_dir, "mesh_library.meshlib"))
+	delete_access.remove(str(abs_export_dir, "/", "mesh_library.meshlib"))
 
 	# save new mesh library to export directory
-	var error = ResourceSaver.save(mesh_library, str(export_dir, export_file_name, ".meshlib"))
+	var error = ResourceSaver.save(mesh_library, str(export_dir, "/", export_file_name, ".meshlib"))
 	
 	# check if resourced saved ok
 	if error:
-		printerr("Error saving resource to export directory!")
-		_exit_app()
+		_log_error("Error saving resource to export directory!")
 		return
 		
-	print(str("\n", export_dir, export_file_name, ".meshlib", " has been created."))
-	print("\nDone!")
+	print_rich(str("\n[color=yellow]", export_dir, "/", export_file_name, ".meshlib[/color]", " has been created."))
+	print_rich("\n[color=green]Done![/color]")
 	
-	_exit_app()
+	#_exit_app()
+
+func _log_error(e: String):
+	printerr(e)
+	#_exit_app()
 
 func _exit_app():
 	# give some time to log everything to console
-	await get_tree().create_timer(1.5).timeout
-	get_tree().quit()
+	#await get_tree().create_timer(1.5).timeout
+	get_tree().quit(1)
