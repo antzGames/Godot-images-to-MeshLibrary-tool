@@ -1,15 +1,22 @@
 @tool
 class_name MeshLibraryCreator
 extends Node
+## This tool creates a [MeshLibrary] of [QuadMesh] from image tiles.
+##
+## Each individual image tile will create a [QuadMesh] in the [MeshLibrary].
+## Any Godot supported image format (PNG, WebP, GIF, etc) will work.
+## Made by Antz!
 
 ## Directory where the tile images are located.
 @export_dir var import_dir : String
 ## Directory where mesh library will be exported.
 @export_dir var export_dir : String
+## Tile images file extension. You must include the initial period. Case sensitive!
+@export var image_extention : String = ".png"
+
 ## Name of the exported [MeshLibrary].
 @export var export_file_name : String = "mesh_library"
-## Tile images file extension. You must include the initial period. Case sensitive!
-@export var extention : String = ".png"
+
 ## Size of QuadMesh as [Vector2] in meters
 @export var size_of_mesh: Vector2  = Vector2(1.2, 1.2)
 
@@ -20,14 +27,15 @@ var abs_import_dir: String
 var abs_export_dir: String
 
 func _ready() -> void:
-	print_rich("Just press [color=yellow]Generate MeshLibrary[/color] in inspector!")
+	print_rich("Just press the [color=yellow]Generate MeshLibrary[/color] button in the inspector!")
 
 func _process(_delta: float) -> void:
 	if !Engine.is_editor_hint():
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(2.5).timeout
 		get_tree().quit(1)
 
 func create_mesh_library():
+	print_rich("\n-----------------------------")
 	print_rich("[color=green]Antz MeshLibrary Creator Tool[/color]")
 	print_rich("-----------------------------\n")
 	
@@ -55,7 +63,7 @@ func create_mesh_library():
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			if !dir.current_is_dir() and file_name.ends_with(extention):
+			if !dir.current_is_dir() and file_name.ends_with(image_extention):
 				files.append(file_name)
 			file_name = dir.get_next()
 	else:
@@ -111,16 +119,9 @@ func create_mesh_library():
 		_log_error("Error saving resource to export directory!")
 		return
 		
-	print_rich(str("\n[color=yellow]", export_dir, "/", export_file_name, ".meshlib[/color]", " has been created."))
+	print_rich(str("\n[color=yellow]", export_dir, "/[/color][color=purple]", export_file_name, ".meshlib[/color]", " has been created."))
 	print_rich("\n[color=green]Done![/color]")
 	
-	#_exit_app()
 
 func _log_error(e: String):
 	printerr(e)
-	#_exit_app()
-
-func _exit_app():
-	# give some time to log everything to console
-	#await get_tree().create_timer(1.5).timeout
-	get_tree().quit(1)
