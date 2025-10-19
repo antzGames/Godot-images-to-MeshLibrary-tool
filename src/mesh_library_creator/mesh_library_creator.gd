@@ -34,19 +34,19 @@ func _process(_delta: float) -> void:
 		get_tree().quit(1)
 
 func create_mesh_library():
-	print("\n-----------------------------")
-	print_rich("[color=green]Antz MeshLibrary Creator Tool[/color]")
-	print("-----------------------------\n")
+	print("\n------------------------------------")
+	print_rich("🐜 [color=red]Antz[/color] [color=green]MeshLibrary Creator Tool[/color] ⛏️")
+	print("------------------------------------\n")
 	
 	# check export variables
 	if not import_dir or import_dir.length() == 0:
-		printerr("Import directory not set!")
+		printerr("⛔Import directory not set!")
 		return
 	elif not export_dir or export_dir.length() == 0:
-		printerr("Export directory not set!")
+		printerr("⛔Export directory not set!")
 		return
 	elif not export_file_name or export_file_name.length() == 0:
-		printerr("Export file not set!")
+		printerr("⛔Export file not set!")
 		return
 
 	var files = []
@@ -63,15 +63,15 @@ func create_mesh_library():
 				files.append(file_name)
 			file_name = dir.get_next()
 	else:
-		printerr("Could not open import directory!")
+		printerr("⛔Could not open import directory!")
 		return
 	
 	# Stop if no files found
 	if files.size() == 0:
-		printerr("No image tiles found in import directory!")
+		printerr("⛔No image tiles found in import directory!")
 		return
 	
-	print_rich("Image tiles found: [color=yellow]", files, "[/color]\n")
+	print_rich("✅Image tiles found: [color=yellow]", files, "[/color]\n")
 	
 	# Create mesh library
 	var x: int = 0
@@ -103,7 +103,7 @@ func create_mesh_library():
 	
 	# check if export directory valid
 	if not delete_access:
-		printerr("Error accessing export directory!")
+		printerr("⛔Error accessing export directory!")
 		return
 		
 	# note if file export_file_name changed then old file will not be deleted
@@ -114,8 +114,8 @@ func create_mesh_library():
 	
 	# check if resource saved ok
 	if error:
-		printerr("Error saving resource to export directory!")
+		printerr("⛔Error saving resource to export directory!")
 		return
 		
-	print_rich(str("\n[color=yellow]", export_dir, "/[/color][color=purple]", export_file_name, ".meshlib[/color]", " has been created."))
-	print_rich("\n[color=green]Done![/color]")
+	print_rich(str("\n✅ [color=yellow]", export_dir, "/[/color][color=purple]", export_file_name, ".meshlib[/color]", " has been created."))
+	print_rich("✅ [color=green]Done![/color]")
