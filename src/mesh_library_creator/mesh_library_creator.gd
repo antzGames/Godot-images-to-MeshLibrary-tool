@@ -25,8 +25,8 @@ extends Node
 @export_tool_button("\nGenerate MeshLibrary\n\n", "MeshLibrary")
 var generate_action = create_mesh_library
 
-var abs_import_dir: String
-var abs_export_dir: String
+#var abs_import_dir: String
+#var abs_export_dir: String
 
 func _ready() -> void:
 	print_rich("Just press the [color=yellow]Generate MeshLibrary[/color] button in the inspector!")
@@ -52,13 +52,10 @@ func create_mesh_library():
 		printerr("Export file not set!")
 		return
 
-	abs_import_dir = ProjectSettings.globalize_path(import_dir)
-	abs_export_dir = ProjectSettings.globalize_path(export_dir)
-
 	var files = []
 	
 	# open import directory
-	var dir = DirAccess.open(abs_import_dir)
+	var dir = DirAccess.open(import_dir)
 	
 	# get all PNG files in directory
 	if dir:
@@ -104,14 +101,14 @@ func create_mesh_library():
 		x += 1
 
 	# check if a meshlib file already exists, if so delete it
-	var delete_access = DirAccess.open(abs_export_dir)
+	var delete_access = DirAccess.open(export_dir)
 	
 	# check if export directory valid
 	if not delete_access:
 		printerr("Error accessing export directory!")
 		return
 		
-	delete_access.remove(str(abs_export_dir, "/", "mesh_library.meshlib"))
+	delete_access.remove(str(export_dir, "/", "mesh_library.meshlib"))
 
 	# save new mesh library to export directory
 	var error = ResourceSaver.save(mesh_library, str(export_dir, "/", export_file_name, ".meshlib"))
