@@ -118,4 +118,4 @@ func create_mesh_library():
 		return
 		
 	print_rich(str("\n✅ [color=yellow]", export_dir, "/[/color][color=purple]", export_file_name, ".meshlib[/color]", " has been created."))
-	print_rich("✅ [color=green]Done![/color]")
+	print_rich("✅ [color=green][b]Done![/b][/color]")
