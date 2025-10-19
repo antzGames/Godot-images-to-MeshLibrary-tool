@@ -6,6 +6,8 @@ extends Node
 ## Each individual image tile will create a [QuadMesh] in the [MeshLibrary].
 ## Any Godot supported image format (PNG, WebP, GIF, etc) will work.
 ## Made by Antz!
+## 
+## @tutorial(GitHub Repository): https://github.com/antzGames/Godot-images-to-MeshLibrary-tool
 
 ## Directory where the tile images are located.
 @export_dir var import_dir : String
