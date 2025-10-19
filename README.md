@@ -50,6 +50,16 @@ You are free to add/modify the mesh setting to your requirements.
 		mesh.surface_get_material(0).texture_filter = 2 # Nearest Mipmap
 ```
 
+## Can I use a BoxMesh or any other PrimitiveMesh instead of QuadMesh?
+
+Absolutely, but you will need to change:
+
+```gdscript
+	var mesh = QuadMesh.new()
+```
+
+To `BoxMesh` or whatever you need, but you might have to code some UV mapping stuff.  I laid the foundation, but you will need handle this in code yourself.
+
 ## I need to generate multiple mesh libraries
 
 Reclicking the **Generate MeshLibrary** button from the inspector will overwrite any previous `MeshLibrary` with the same export directory and file name.
