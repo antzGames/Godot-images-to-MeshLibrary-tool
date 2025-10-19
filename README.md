@@ -20,11 +20,11 @@ Note: Just replace the sample tile images in the import directory with your own 
 2. Open the `mesh_library_creator.tscn` scene.
 3. From the inspector set the correct import directory of the individual tile images that you want to make a `MeshLibrary` for.
 4. From the inspector set the correct export directory.
-5. Verify the file extenion of your tile image files.  Make usre the initial period is present and the extension is **case sensitive**.
+5. Verify the file extenion of your tile image files.  Make sure the initial period is present and the extension is **case sensitive**.
 6. You can change the size of the `QuadMesh` if needed.  The default is 1.2 x 1.2 meters.
 7. From the inspector click the **Generate MeshLibrary** button.
-8. On success the `MeshLibrary` will be craeted and saved the export folder.
-9. Error/Info are reported in the output console.
+8. On success the `MeshLibrary` will be created and saved to the export folder.
+9. Error/Info will be reported in the output console.
 
 <img width="426.5" height="347.5" alt="s1" src="https://github.com/user-attachments/assets/dd583a53-7265-4057-8c9d-23d807e827c3" />
 
