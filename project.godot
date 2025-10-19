@@ -13,6 +13,9 @@ config_version=5
 config/name="LimitedAssetJam2025"
 run/main_scene="uid://cc8rr4lus4knh"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+boot_splash/image="uid://dm12t2sbyykq1"
+config/icon="uid://dkwf1s5b0y7bb"
+boot_splash/minimum_display_time=1000
 
 [file_customization]
 
