@@ -25,9 +25,6 @@ extends Node
 @export_tool_button("\nGenerate MeshLibrary\n\n", "MeshLibrary")
 var generate_action = create_mesh_library
 
-#var abs_import_dir: String
-#var abs_export_dir: String
-
 func _ready() -> void:
 	print_rich("Just press the [color=yellow]Generate MeshLibrary[/color] button in the inspector!")
 
@@ -80,6 +77,7 @@ func create_mesh_library():
 	var x: int = 0
 	var mesh_library: MeshLibrary = MeshLibrary.new()
 	
+	# loop tile image files
 	for file_name: String in files:
 		print_rich("Creating item: ", x , " - [color=yellow]", str(file_name.split(".")[0],"[/color]"))
 
@@ -108,7 +106,8 @@ func create_mesh_library():
 		printerr("Error accessing export directory!")
 		return
 		
-	delete_access.remove(str(export_dir, "/", "mesh_library.meshlib"))
+	# note if file export_file_name changed then old file will not be deleted
+	delete_access.remove(str(export_dir, "/", export_file_name, ".meshlib"))
 
 	# save new mesh library to export directory
 	var error = ResourceSaver.save(mesh_library, str(export_dir, "/", export_file_name, ".meshlib"))
