@@ -37,7 +37,7 @@ Note: Just replace the sample tile images in the import directory with your own 
 
 You can modify the `create_mesh_library()` method in the `mesh_library_creator.gd` script to further customize the `QuadMesh`'s mesh settings.
 
-Currently, the mesh settings **disable** `cull_mode` and set the `texture_filter` to **Nearest Mipmap**.
+Currently, the mesh settings sets `cull_mode` to **disable** and sets the `texture_filter` to **Nearest Mipmap**.
 
 You are free to add/modify the mesh setting to your requirements.
 
