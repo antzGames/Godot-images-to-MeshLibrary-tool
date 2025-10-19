@@ -31,7 +31,9 @@ Note: Just replace the sample tile images in the import directory with your own 
 
 <img width="426.5" height="347.5" alt="s1" src="https://github.com/user-attachments/assets/dd583a53-7265-4057-8c9d-23d807e827c3" />
 
-![s2](https://github.com/user-attachments/assets/cc6c1152-ea86-42d5-b380-1af1c1de3f29)
+<img width="2275" height="1683" alt="s2" src="https://github.com/user-attachments/assets/30986895-7c77-44c5-b641-49c54f4d4e06" />
+
+
 
 ## Customizing your mesh settings further
 
