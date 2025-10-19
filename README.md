@@ -58,7 +58,7 @@ Absolutely, but you will need to change:
 	var mesh = QuadMesh.new()
 ```
 
-To `BoxMesh` or whatever you need, but you might have to code some UV mapping stuff.  I laid the foundation, but you will need handle this in code yourself.
+To `BoxMesh` or whatever you need, but you might have to code some UV mapping stuff.  I laid the foundation, but you will need to handle this in code yourself.
 
 ## I need to generate multiple mesh libraries
 
