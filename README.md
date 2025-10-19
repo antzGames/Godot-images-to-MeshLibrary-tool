@@ -27,7 +27,7 @@ Note: Just replace the sample tile images in the import directory with your own 
 6. You can change the size of the `QuadMesh` if needed.  The default is 1.2 x 1.2 meters.
 7. From the inspector click the **Generate MeshLibrary** button.
 8. On success the `MeshLibrary` will be created and saved to the export folder.
-9. Error/Info will be reported in the output console.
+9. Error/Info messages will be reported in the output console.
 
 <img width="426.5" height="347.5" alt="s1" src="https://github.com/user-attachments/assets/dd583a53-7265-4057-8c9d-23d807e827c3" />
 
