@@ -35,7 +35,7 @@ func _process(_delta: float) -> void:
 
 func create_mesh_library():
 	print("\n------------------------------------")
-	print_rich("🐜 [color=red]Antz[/color] [color=green]MeshLibrary Creator Tool[/color] ⛏️")
+	print_rich("🐜 [color=red][b]Antz[/b][/color] [color=green]MeshLibrary Creator Tool[/color] ⛏️")
 	print("------------------------------------\n")
 	
 	# check export variables
