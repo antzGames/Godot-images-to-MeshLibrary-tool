@@ -26,6 +26,6 @@ Note: Just replace the sample tile images in the import directory with your own 
 8. On success the `MeshLibrary` will be craeted and saved the export folder.
 9. Error/Info are reported in the output console.
 
-<img width="476.5" height="347.5" alt="s1" src="https://github.com/user-attachments/assets/dd583a53-7265-4057-8c9d-23d807e827c3" />
+<img width="426.5" height="347.5" alt="s1" src="https://github.com/user-attachments/assets/dd583a53-7265-4057-8c9d-23d807e827c3" />
 
 ![s2](https://github.com/user-attachments/assets/cc6c1152-ea86-42d5-b380-1af1c1de3f29)
