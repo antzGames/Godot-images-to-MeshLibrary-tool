@@ -1,6 +1,6 @@
 # Godot 4.5: Tile images to MeshLibrary creation tool
 
-This simple tool will covert all images in an import directory to a `MeshLibrary`.  Each image will have its own `QuadMesh` added to the `MeshLibrary`.
+This simple tool will covert all images from an import directory to a `MeshLibrary`.  Each image will have its own `QuadMesh` added to the `MeshLibrary`.
 
 https://github.com/user-attachments/assets/fe622faa-cae0-47d6-bbf9-f5fa7503bfe5
 
