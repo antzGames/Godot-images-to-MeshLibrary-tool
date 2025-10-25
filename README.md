@@ -1,6 +1,6 @@
 # Godot 4.5: Tile images to MeshLibrary creation tool
 
-This simple tool will covert all images in an import directory to a `MeshLibrary`.  Each image will have its own `QuadMesh` added to the `MeshLibrary`.
+This simple tool will covert all images from an import directory to a `MeshLibrary`.  Each image will have its own `QuadMesh` added to the `MeshLibrary`.
 
 https://github.com/user-attachments/assets/fe622faa-cae0-47d6-bbf9-f5fa7503bfe5
 
@@ -67,3 +67,7 @@ To `BoxMesh` or whatever you need, but you might have to code some UV mapping st
 Reclicking the **Generate MeshLibrary** button from the inspector will overwrite any previous `MeshLibrary` with the same export directory and file name.
 
 To build multilple mesh libraries, without overwriting previous built mesh libraries, just **make a copy** of the `mesh_library_creator.tscn` scene and config different import/export and file name settings in the inspector.
+
+## Future Capabilities
+
+- allow the user to specify any `PrimitiveMesh` sub class as the mesh type.
